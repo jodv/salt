@@ -1596,6 +1596,17 @@ class SaltCMDOptionParser(six.with_metaclass(OptionParserMeta,
             default=False,
             help=('Report only those states that have changed')
         )
+        self.add_option(
+            '--splay',
+            dest='splay',
+            nargs='?',
+            default=None,
+            const=300,
+            metavar='SECONDS',
+            help=('Evenly spread out parallel minion execution of a large job '
+                  'over a specified number of seconds (default: %(default)s)')
+        )
+            
 
     def _mixin_after_parsed(self):
         if len(self.args) <= 1 and not self.options.doc:

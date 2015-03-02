@@ -98,6 +98,12 @@ class SaltCMD(parsers.SaltCMDOptionParser):
                 'show_timeout': self.options.show_timeout,
                 'show_jid': self.options.show_jid}
 
+            # Wrap command function in splay module if called with splay option
+            if self.config.splay is not None:
+                new_arg = [self.config.splay, kwarg['fun']] + kwarg['arg']
+                kwarg['arg'] = new_arg
+                kwarg['fun'] = 'splay.splay'
+
             if 'token' in self.config:
                 try:
                     with salt.utils.fopen(os.path.join(self.config['cachedir'], '.root_key'), 'r') as fp_:
