@@ -1598,13 +1598,10 @@ class SaltCMDOptionParser(six.with_metaclass(OptionParserMeta,
         )
         self.add_option(
             '--splay',
-            dest='splay',
-            nargs='?',
-            default=None,
-            const=300,
             metavar='SECONDS',
+            type=int,
             help=('Evenly spread out parallel minion execution of a large job '
-                  'over a specified number of seconds (default: %(default)s)')
+                  'over a specified number of seconds.')
         )
             
 

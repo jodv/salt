@@ -99,10 +99,10 @@ class SaltCMD(parsers.SaltCMDOptionParser):
                 'show_jid': self.options.show_jid}
 
             # Wrap command function in splay module if called with splay option
-            if self.config.splay is not None:
-                new_arg = [self.config.splay, kwarg['fun']] + kwarg['arg']
-                kwarg['arg'] = new_arg
-                kwarg['fun'] = 'splay.splay'
+            if 'splay' in self.config:
+                new_arg = [self.config['splay'], kwargs['fun']] + kwargs['arg']
+                kwargs['arg'] = new_arg
+                kwargs['fun'] = 'splay.splay'
 
             if 'token' in self.config:
                 try:

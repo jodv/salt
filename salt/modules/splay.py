@@ -64,7 +64,7 @@ def splay(*args, **kwargs):
         splaytime = _DEFAULT_SPLAYTIME
 
     if splaytime <= 0:
-        raise Exception('splaytime must be a positive integer')
+        raise ValueError('splaytime must be a positive integer')
 
     func = args.pop(0)
     # Check if the func is valid before the sleep
